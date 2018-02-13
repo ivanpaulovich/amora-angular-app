@@ -1,10 +1,19 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { RegisterCommand } from '../model/register-command';
+import { RegisterCommand } from '../model/register-command.model';
 import { CustomerService } from '../customer.service';
-import { Customer } from '../model/customer';
+import { Customer } from '../model/customer.model';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material';
+import {
+  ValidatorFn,
+  Validators,
+  AbstractControl,
+  FormControl,
+  NG_VALIDATORS,
+  FormGroup,
+  FormBuilder
+} from '@angular/forms';
 
 @Component({
   selector: 'app-registration',
@@ -12,20 +21,32 @@ import { MatButtonModule } from '@angular/material';
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
-
-  registerModel: RegisterCommand = { PIN: '', Name: '', InitialAmount: 0};
+  registerForm: FormGroup;
+  registerModel: RegisterCommand = { pin: '', name: '', initialAmount: 0 };
 
   constructor(
     private customerService: CustomerService,
-    private router: Router) { }
+    private router: Router,
+    private fb: FormBuilder) {
+    this.createForm();
+  }
 
   ngOnInit() {
   }
 
+  private createForm(): void {
+    this.registerForm = this.fb.group({
+      pin: ['', Validators.required],
+      name: ['', Validators.required],
+      initialAmount: ['', Validators.required]
+    });
+  }
+
   public register(): void {
-    this.customerService.register(this.registerModel)
+    this.customerService
+      .register(this.registerModel)
       .subscribe(customer => {
-        this.router.navigate([`/customer/${customer.CustomerId}`]);
+        this.router.navigate([`/customer/${customer.customerId}`]);
       });
   }
 }

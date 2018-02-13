@@ -2,17 +2,17 @@ import 'core-js/es6/reflect';
 import 'core-js/es7/reflect';
 import 'zone.js/dist/zone';
 import 'hammerjs';
-import {FormControl, Validators} from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { CustomerService } from './customer.service';
 import { AccountService } from './account.service';
 import { CommonModule } from '@angular/common';
-import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
-import {BrowserModule} from '@angular/platform-browser';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {NgModule} from '@angular/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   MatAutocompleteModule,
   MatButtonModule,
@@ -47,9 +47,9 @@ import {
   MatToolbarModule,
   MatTooltipModule,
 } from '@angular/material';
-import {HttpModule} from '@angular/http';
-import {HttpClientModule} from '@angular/common/http';
-import {CdkTableModule} from '@angular/cdk/table';
+import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
+import { CdkTableModule } from '@angular/cdk/table';
 import { MyAccountsComponent } from './my-accounts/my-accounts.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { DepositComponent } from './deposit/deposit.component';
@@ -96,11 +96,13 @@ import { CustomerComponent } from './customer/customer.component';
     MatTableModule,
     MatTabsModule,
     MatToolbarModule,
-    MatTooltipModule
+    MatTooltipModule,
+    FormsModule
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     MatAutocompleteModule,

@@ -9,7 +9,7 @@
     </mat-expansion-panel-header>
 
     <mat-list>
-      <mat-list-item *ngFor="let transaction of account.Transactions" 
+      <mat-list-item *ngFor="let transaction of account.transactions" 
         [style.color]="transaction.description == 'Credit' ? 'green' : 'red'">
         {{ transaction.amount.value | currency}}
       </mat-list-item>

@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Account } from './model/account';
+import { Account } from './model/account.model';
 
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
-import { DepositCommand } from './model/deposit-command';
-import { WithdrawCommand } from './model/withdraw-command';
+import { DepositCommand } from './model/deposit-command.model';
+import { WithdrawCommand } from './model/withdraw-command.model';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json',

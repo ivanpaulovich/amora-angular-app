@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AccountService } from '../account.service';
-import { Account } from '../model/account';
+import { Account } from '../model/account.model';
 import { ActivatedRoute } from '@angular/router';
 import { CustomerService } from '../customer.service';
-import { Customer } from '../model/customer';
+import { Customer } from '../model/customer.model';
 
 @Component({
   selector: 'app-customer',
@@ -11,7 +11,7 @@ import { Customer } from '../model/customer';
   styleUrls: ['./customer.component.css']
 })
 export class CustomerComponent implements OnInit {
-  customerModel: Customer = { CustomerId: '', Name: '', Personnummer: '' };
+  customerModel: Customer = { customerId: '', name: '', personnummer: '' };
 
   constructor(
     private route: ActivatedRoute,
