@@ -22,7 +22,7 @@ export class AccountService {
     private http: HttpClient) { }
 
   getAccounts(customerId: string): Observable<Account[]> {
-    const url = `${this.accountsUrl}/?customerId=${customerId}`;
+    const url = `${this.accountsUrl}/${customerId}`;
     return this.http.get<Account[]>(url);
   }
 

@@ -43,6 +43,8 @@ export class RegistrationComponent implements OnInit {
   }
 
   public register(): void {
+    Object.assign(this.registerModel, this.registerForm.value);
+
     this.customerService
       .register(this.registerModel)
       .subscribe(customer => {
