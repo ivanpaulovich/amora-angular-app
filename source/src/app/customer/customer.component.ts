@@ -28,4 +28,8 @@ export class CustomerComponent implements OnInit {
       .getCustomer(customerId)
       .subscribe(customer => this.customerModel = customer);
   }
+
+  realoadCustomer(event) {
+    this.getCustomer();
+  }
 }

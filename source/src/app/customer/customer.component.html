@@ -1,22 +1,14 @@
 <h2>Account Balance for {{ customerModel.name }} ({{ customerModel.personnummer }})</h2>
 <mat-accordion>
-    <mat-expansion-panel *ngFor="let account of customerModel.accounts">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          {{account.currentBalance | currency }}
-        </mat-panel-title>
-        <mat-panel-description>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-  
-      <mat-list>
-        <mat-list-item *ngFor="let transaction of account.transactions" 
-          [style.color]="transaction.description == 'Credit' ? 'green' : 'red'">
-          {{ transaction.amount | currency}}
-        </mat-list-item>
-      </mat-list>
-  
-      <app-deposit></app-deposit>
-  
-    </mat-expansion-panel>
-  </mat-accordion>
+  <mat-expansion-panel *ngFor="let account of customerModel.accounts">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+       <strong>{{account.currentBalance | currency }}</strong>
+      </mat-panel-title>
+      <mat-panel-description>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <app-account [account]="account" (deleteEvent)="realoadCustomer()"></app-account>
+  </mat-expansion-panel>
+</mat-accordion>

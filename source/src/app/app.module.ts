@@ -48,17 +48,18 @@ import {
   MatTooltipModule,
 } from '@angular/material';
 import { HttpModule } from '@angular/http';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CdkTableModule } from '@angular/cdk/table';
 import { AppRoutingModule } from './/app-routing.module';
-import { DepositComponent } from './deposit/deposit.component';
+import { AccountComponent } from './account/account.component';
 import { CustomerComponent } from './customer/customer.component';
+import { ServerMessageInterceptor } from './utils/server-messages-interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistrationComponent,
-    DepositComponent,
+    AccountComponent,
     CustomerComponent
   ],
   exports: [
@@ -136,7 +137,12 @@ import { CustomerComponent } from './customer/customer.component';
     MatTooltipModule,
     AppRoutingModule,
   ],
-  providers: [CustomerService, AccountService],
+  providers: [CustomerService, AccountService,
+    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: ServerMessageInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

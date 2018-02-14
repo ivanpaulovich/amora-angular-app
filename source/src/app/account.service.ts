@@ -7,6 +7,7 @@ import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
 import { DepositCommand } from './model/deposit-command.model';
 import { WithdrawCommand } from './model/withdraw-command.model';
+import { DeleteCommand } from './model/delete-command.model';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json',
@@ -36,11 +37,16 @@ export class AccountService {
     return this.http.get<Account>(url);
   }
 
-  public deposit(deposit: DepositCommand): void {
-    this.http.patch(this.accountsUrl + '/Deposit', deposit, httpOptions);
+  deposit(deposit: DepositCommand): Observable<any> {
+    return this.http.patch(this.accountsUrl + '/Deposit', deposit, httpOptions);
   }
 
-  public withdraw(withdraw: WithdrawCommand): void {
-    this.http.patch(this.accountsUrl + '/Withdraw', withdraw, httpOptions);
+  delete(accountId: string): Observable<any> {
+    const url = `${this.accountsUrl}/${accountId}`;
+    return this.http.delete(url, httpOptions);
+  }
+
+  withdraw(withdraw: WithdrawCommand): Observable<any> {
+    return this.http.patch(this.accountsUrl + '/Withdraw', withdraw, httpOptions);
   }
 }

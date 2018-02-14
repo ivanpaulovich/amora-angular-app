@@ -1,0 +1,18 @@
+<mat-list>
+  <mat-list-item *ngFor="let transaction of account.transactions" 
+    [style.color]="transaction.description == 'Credit' ? 'green' : 'red'">
+    {{ transaction.amount | currency}}
+  </mat-list-item>
+</mat-list>
+<mat-form-field class="example-full-width">
+  <input matInput placeholder="Amount" value="0" [(ngModel)]="amount">
+</mat-form-field>
+<button mat-raised-button color="primary" [disabled]="amount === 0" (click)="deposit()">
+  Deposit
+</button>
+<button mat-raised-button color="accent" [disabled]="amount === 0" (click)="withdraw()">
+  Withdraw
+</button>
+<button mat-raised-button color="warn" (click)="delete()">
+  Close Account
+</button>
