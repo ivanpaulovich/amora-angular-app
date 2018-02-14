@@ -11,7 +11,7 @@ import { Customer } from '../model/customer.model';
   styleUrls: ['./customer.component.css']
 })
 export class CustomerComponent implements OnInit {
-  customerModel: Customer = { customerId: '', name: '', personnummer: '' };
+  customerModel: Customer = { customerId: '', name: '', personnummer: '', accounts: [] };
 
   constructor(
     private route: ActivatedRoute,

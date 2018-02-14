@@ -50,7 +50,6 @@ import {
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { CdkTableModule } from '@angular/cdk/table';
-import { MyAccountsComponent } from './my-accounts/my-accounts.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { DepositComponent } from './deposit/deposit.component';
 import { CustomerComponent } from './customer/customer.component';
@@ -59,7 +58,6 @@ import { CustomerComponent } from './customer/customer.component';
   declarations: [
     AppComponent,
     RegistrationComponent,
-    MyAccountsComponent,
     DepositComponent,
     CustomerComponent
   ],
