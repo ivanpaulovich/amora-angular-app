@@ -1,8 +1,9 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Account } from '../model/account.model';
 import { DepositCommand } from '../model/deposit-command.model';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatTableDataSource } from '@angular/material';
 import { AccountService } from '../account.service';
+import { Transaction } from '../model/transaction.model';
 
 @Component({
   selector: 'app-account',
@@ -14,13 +15,17 @@ export class AccountComponent implements OnInit {
   @Output() depositEvent = new EventEmitter<any>();
   @Output() withdrawEvent = new EventEmitter<any>();
   @Output() deleteEvent = new EventEmitter<any>();
+  currentDate = new Date();
   amount = 0;
+  displayedColumns = ['transactionDate', 'amount'];
+  dataSource = new MatTableDataSource();
 
   constructor(
     public dialog: MatDialog,
     public accountService: AccountService) { }
 
   ngOnInit() {
+    this.dataSource = new MatTableDataSource(this.account.transactions);
   }
 
   realoadAccount() {
@@ -39,6 +44,7 @@ export class AccountComponent implements OnInit {
         this.realoadAccount();
         this.depositEvent.emit(resp);
         this.amount = 0;
+        this.currentDate = new Date();
       });
   }
 
@@ -52,6 +58,7 @@ export class AccountComponent implements OnInit {
         this.realoadAccount();
         this.withdrawEvent.emit(resp);
         this.amount = 0;
+        this.currentDate = new Date();
       });
   }
 

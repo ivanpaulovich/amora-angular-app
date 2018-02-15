@@ -1,14 +1,4 @@
-<h2>Account Balance for {{ customerModel.name }} ({{ customerModel.personnummer }})</h2>
-<mat-accordion>
-  <mat-expansion-panel *ngFor="let account of customerModel.accounts">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-       <strong>{{account.currentBalance | currency }}</strong>
-      </mat-panel-title>
-      <mat-panel-description>
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-
-    <app-account [account]="account" (deleteEvent)="realoadCustomer()"></app-account>
-  </mat-expansion-panel>
-</mat-accordion>
+<h2>Hi, {{ customerModel.name }} ({{ customerModel.personnummer }})</h2>
+<div *ngFor="let account of customerModel.accounts">
+  <app-account [account]="account" (deleteEvent)="realoadCustomer()"></app-account>
+</div>
