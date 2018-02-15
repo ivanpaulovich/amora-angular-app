@@ -1,16 +1,25 @@
 <mat-card class="example-card">
   <mat-card-header>
     <mat-card-title>Account Number: {{account.accountId}}</mat-card-title>
-    <mat-card-subtitle>Current Balance: {{account.currentBalance | currency}}</mat-card-subtitle>
+    <mat-card-subtitle>{{ currentDate| date: 'd MMMM y HH:mm:ss'}}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
+      <mat-divider></mat-divider>
+      <mat-list>
+        <mat-list-item>
+          <mat-icon mat-list-icon>info</mat-icon>
+          <h4>Amount</h4>
+          <p mat-line>Transaction Date</p> 
+        </mat-list-item>
+      </mat-list>
+      <mat-divider></mat-divider>
     <mat-list>
       <mat-list-item *ngFor="let transaction of account.transactions" [style.color]="transaction.description == 'Credit' ? 'green' : 'red'">
         <mat-icon mat-list-icon *ngIf="transaction.description === 'Credit'">add_circle</mat-icon>
         <mat-icon mat-list-icon *ngIf="transaction.description !== 'Credit'">remove_circle</mat-icon>
         <h4 *ngIf="transaction.description == 'Credit'"> C{{ transaction.amount | currency}}</h4>
         <h4 *ngIf="transaction.description != 'Credit'"> D{{ transaction.amount | currency}}</h4>
-        <p mat-line> {{ transaction.transactionDate | date: 'dd/MM/yyyy HH:mm:ss'}} </p>
+        <p mat-line> {{ transaction.transactionDate | date: 'dd/MM/yyyy HH:mm'}} </p>
       </mat-list-item>
     </mat-list>
     <mat-divider></mat-divider>
@@ -18,7 +27,7 @@
       <mat-list-item>
         <mat-icon mat-list-icon>monetization_on</mat-icon>
         <h4> B{{ account.currentBalance | currency}}</h4>
-        <p mat-line> {{ currentDate| date: 'dd/MM/yyyy HH:mm:ss'}} </p>
+        <p mat-line>TOTAL </p>
       </mat-list-item>
     </mat-list>
     <mat-divider></mat-divider>
@@ -39,7 +48,7 @@
     <button mat-raised-button color="accent" [disabled]="amount === 0" (click)="withdraw()">
       Withdraw
     </button>
-    <button mat-raised-button color="warn" (click)="delete()">
+    <button mat-raised-button color="warn" (click)="delete()" [disabled]="account.currentBalance !== 0">
       Close Account
     </button>
   </mat-card-actions>
