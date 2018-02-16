@@ -15,7 +15,7 @@ docker run -p 8001:80 -d \
 	--name amora-frontend \
 	ivanpaulovich/amora:latest
 ```
-Then navigate to http://localhost:8001 and play with de API.
+Then navigate to http://localhost:8001 and play with the App.
 
 # We are live on Azure
 
@@ -27,4 +27,4 @@ Then will be redirect to the account balance page where you can Deposit, Withdra
 
 ![Account Balance](MyAccountBalancePage.png)
 
-This project and website should be used only for learning and *all data is erased weekly*.
+This source code and website should be used only for learning and **all data is erased weekly**.
