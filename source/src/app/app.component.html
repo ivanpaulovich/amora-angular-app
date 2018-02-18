@@ -1,7 +1,19 @@
 <div>
   <mat-toolbar color="primary">
-    <span>Manage your account balance!</span>
+    <button mat-icon-button>
+      <img src="./assets/acerola-icon.png" class="back-end-logo" *ngIf="currentBackEndName === 'Acerola'">
+      <img src="./assets/manga-icon.png" class="back-end-logo" *ngIf="currentBackEndName === 'Manga'">
+    </button>
+    <span>Manage your account balance</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button [mat-menu-trigger-for]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
   </mat-toolbar>
+  <mat-menu x-position="before" #menu="matMenu">
+    <button mat-menu-item (click)="changeBackEnd('Acerola')">Use Acerola back-end</button>
+    <button mat-menu-item (click)="changeBackEnd('Manga')">Use Manga back-end</button>
+  </mat-menu>
 
   <mat-card>
     <router-outlet></router-outlet>

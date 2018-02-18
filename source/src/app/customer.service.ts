@@ -8,34 +8,36 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Customer } from './model/customer.model';
+import { BaseService } from './base.service';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json',
-  'Access-Control-Allow-Origin': '*' })
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*'
+  })
 };
 
 @Injectable()
-export class CustomerService {
-
-  private customersUrl = 'http://grape.westus2.cloudapp.azure.com:8000/api/Customers';
-
+export class CustomerService extends BaseService {
   constructor(
-    private http: HttpClient) { }
+    protected http: HttpClient) {
+    super(http, 'Customers');
+  }
 
   public register(register: RegisterCommand): Observable<Customer> {
-    return this.http.post<Customer>(this.customersUrl, register, httpOptions);
+    return this.http.post<Customer>(this.url, register, httpOptions);
   }
 
   public getCustomer(customerId: string): Observable<Customer> {
-    const url = `${this.customersUrl}/${customerId}`;
+    const url = `${this.url}/${customerId}`;
     return this.http.get<Customer>(url);
   }
 
   public deposit(deposit: DepositCommand): void {
-    this.http.patch(this.customersUrl + 'Deposit', deposit, httpOptions);
+    this.http.patch(this.url + 'Deposit', deposit, httpOptions);
   }
 
   public withdraw(withdraw: WithdrawCommand): void {
-    this.http.patch(this.customersUrl + 'Withdraw', withdraw, httpOptions);
+    this.http.patch(this.url + 'Withdraw', withdraw, httpOptions);
   }
 }

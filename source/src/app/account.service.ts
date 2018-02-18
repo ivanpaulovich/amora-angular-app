@@ -8,45 +8,47 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { DepositCommand } from './model/deposit-command.model';
 import { WithdrawCommand } from './model/withdraw-command.model';
 import { DeleteCommand } from './model/delete-command.model';
+import { BaseService } from './base.service';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json',
-  'Access-Control-Allow-Origin': '*' })
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*'
+  })
 };
 
 @Injectable()
-export class AccountService {
-
-  private accountsUrl = 'http://grape.westus2.cloudapp.azure.com:8000/api/Accounts';
-
+export class AccountService extends BaseService {
   constructor(
-    private http: HttpClient) { }
+    protected http: HttpClient) {
+    super(http, 'Account');
+  }
 
   getAccounts(customerId: string): Observable<Account[]> {
-    const url = `${this.accountsUrl}/${customerId}`;
+    const url = `${this.url}/${customerId}`;
     return this.http.get<Account[]>(url);
   }
 
   getAll(): Observable<Account[]> {
-    const url = `${this.accountsUrl}`;
+    const url = `${this.url}`;
     return this.http.get<Account[]>(url);
   }
 
   get(accountId: string): Observable<Account> {
-    const url = `${this.accountsUrl}/${accountId}`;
+    const url = `${this.url}/${accountId}`;
     return this.http.get<Account>(url);
   }
 
   deposit(deposit: DepositCommand): Observable<any> {
-    return this.http.patch(this.accountsUrl + '/Deposit', deposit, httpOptions);
+    return this.http.patch(this.url + '/Deposit', deposit, httpOptions);
   }
 
   delete(accountId: string): Observable<any> {
-    const url = `${this.accountsUrl}/${accountId}`;
+    const url = `${this.url}/${accountId}`;
     return this.http.delete(url, httpOptions);
   }
 
   withdraw(withdraw: WithdrawCommand): Observable<any> {
-    return this.http.patch(this.accountsUrl + '/Withdraw', withdraw, httpOptions);
+    return this.http.patch(this.url + '/Withdraw', withdraw, httpOptions);
   }
 }
