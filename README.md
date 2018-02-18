@@ -21,10 +21,10 @@ Then navigate to http://localhost:8001 and play with the App.
 
 You can test the application right now by navigating to the [the Amora Website](http://grape.westus2.cloudapp.azure.com:8001 "Amora Website") and registering with your Security Social Number, Given name and your Initial Account balance.  
 
-![Register Page](https://raw.githubusercontent.com/ivanpaulovich/amora/master/docs/RegisterPage.png)
+![Register Page](https://raw.githubusercontent.com/ivanpaulovich/amora/master/docs/register-page.png)
 
 Then will be redirect to the account balance page where you can Deposit, Withdraw an Close your account.
 
-![Account Balance](https://raw.githubusercontent.com/ivanpaulovich/amora/master/docs/MyAccountBalancePage.png)
+![Account Balance](https://raw.githubusercontent.com/ivanpaulovich/amora/master/docs/customer-page.png)
 
 This source code and website should be used only for learning and **all data is erased weekly**.
