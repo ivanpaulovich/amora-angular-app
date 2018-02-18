@@ -24,6 +24,7 @@ import { ToastrService } from 'ngx-toastr';
 export class RegistrationComponent implements OnInit {
   registerForm: FormGroup;
   registerModel: RegisterCommand = { pin: '', name: '', initialAmount: 0 };
+  pin: string;
 
   constructor(
     private customerService: CustomerService,

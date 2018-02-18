@@ -13,7 +13,15 @@ export class ServerMessageInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         return next.handle(req)
             .catch((error, caught) => {
-                this.toastr.error(error.error ? error.error : 'Try again later!', 'Invalid operation!');
+                if (error.error && typeof error.error === 'object') {
+                    Object.getOwnPropertyNames(error.error)
+                        .forEach(e => {
+                            this.toastr.error(error.error[e], 'Invalid operation!');
+                        });
+                } else {
+                    this.toastr.error(error.error ? error.error : 'Try again later!', 'Invalid operation!');
+                }
+
                 return Observable.throw(error);
             }) as any;
     }

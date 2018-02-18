@@ -1,11 +1,11 @@
 <form [formGroup]="registerForm" (ngSubmit)="register()" novalidate>
 
-  <h2>PIN {{ registerModel.pin | uppercase }}</h2>
+  <h2>PIN {{ pin | uppercase }}</h2>
 
   <div class="example-container">
 
     <mat-form-field>
-      <input matInput placeholder="Personnummer" formControlName="pin" required/>
+      <input matInput placeholder="Personnummer" formControlName="pin" required [(ngModel)]="pin" />
       <!-- <mat-error *ngIf="registerForm.pin.invalid">{{getErrorMessage()}}</mat-error> -->
     </mat-form-field>
 
@@ -17,7 +17,7 @@
       <input matInput placeholder="Initial Amount" formControlName="initialAmount" required>
     </mat-form-field>
 
-    <button mat-raised-button color="primary" (click)="register();" [disabled]="registerForm.pristine">
+    <button mat-raised-button color="primary" [disabled]="registerForm.pristine">
       Register
     </button>
   </div>
