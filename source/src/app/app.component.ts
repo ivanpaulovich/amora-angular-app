@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -13,17 +14,17 @@ export class AppComponent {
    *
    */
   constructor(private router: Router) {
-    localStorage.setItem('back-end', 'http://grape.westus2.cloudapp.azure.com:8080/api/');
+    localStorage.setItem('back-end', environment.mangaApiUrl);
   }
 
   changeBackEnd(be) {
     this.currentBackEndName = be;
     switch (be) {
       case 'Manga':
-        localStorage.setItem('back-end', 'http://grape.westus2.cloudapp.azure.com:8080/api/');
+        localStorage.setItem('back-end', environment.mangaApiUrl);
         break;
       case 'Acerola':
-        localStorage.setItem('back-end', 'http://grape.westus2.cloudapp.azure.com:8000/api/');
+        localStorage.setItem('back-end', environment.acerolaApiUrl);
         break;
       default:
         break;

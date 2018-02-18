@@ -21,7 +21,7 @@ const httpOptions = {
 export class AccountService extends BaseService {
   constructor(
     protected http: HttpClient) {
-    super(http, 'Account');
+    super(http, 'Accounts');
   }
 
   getAccounts(customerId: string): Observable<Account[]> {
