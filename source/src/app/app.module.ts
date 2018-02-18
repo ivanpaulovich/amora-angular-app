@@ -54,6 +54,7 @@ import { AppRoutingModule } from './/app-routing.module';
 import { AccountComponent } from './account/account.component';
 import { CustomerComponent } from './customer/customer.component';
 import { ServerMessageInterceptor } from './utils/server-messages-interceptor';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -136,13 +137,18 @@ import { ServerMessageInterceptor } from './utils/server-messages-interceptor';
     MatToolbarModule,
     MatTooltipModule,
     AppRoutingModule,
+    ToastrModule.forRoot({
+      timeOut: 10000,
+      positionClass: 'toast-bottom-full-width',
+      preventDuplicates: true
+    })
   ],
   providers: [CustomerService, AccountService,
     {
-    provide: HTTP_INTERCEPTORS,
-    useClass: ServerMessageInterceptor,
-    multi: true
-  }],
+      provide: HTTP_INTERCEPTORS,
+      useClass: ServerMessageInterceptor,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -14,6 +14,7 @@ import {
   FormGroup,
   FormBuilder
 } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-registration',
@@ -27,7 +28,8 @@ export class RegistrationComponent implements OnInit {
   constructor(
     private customerService: CustomerService,
     private router: Router,
-    private fb: FormBuilder) {
+    private fb: FormBuilder,
+    private toastr: ToastrService) {
     this.createForm();
   }
 
@@ -48,6 +50,7 @@ export class RegistrationComponent implements OnInit {
     this.customerService
       .register(this.registerModel)
       .subscribe(customer => {
+        this.toastr.success('Your new account is registered!', 'Register Account');
         this.router.navigate([`/customer/${customer.customerId}`]);
       });
   }

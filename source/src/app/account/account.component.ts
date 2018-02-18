@@ -4,6 +4,7 @@ import { DepositCommand } from '../model/deposit-command.model';
 import { MatDialog, MatTableDataSource } from '@angular/material';
 import { AccountService } from '../account.service';
 import { Transaction } from '../model/transaction.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-account',
@@ -22,7 +23,8 @@ export class AccountComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    public accountService: AccountService) { }
+    public accountService: AccountService,
+    private toastr: ToastrService) { }
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource(this.account.transactions);
@@ -43,8 +45,9 @@ export class AccountComponent implements OnInit {
       .subscribe(resp => {
         this.realoadAccount();
         this.depositEvent.emit(resp);
-        this.amount = 0;
         this.currentDate = new Date();
+        this.toastr.success(`You've done a deposit of $ ${this.amount}`, 'Deposit');
+        this.amount = 0;
       });
   }
 
@@ -57,8 +60,9 @@ export class AccountComponent implements OnInit {
       .subscribe(resp => {
         this.realoadAccount();
         this.withdrawEvent.emit(resp);
-        this.amount = 0;
         this.currentDate = new Date();
+        this.toastr.success( `You've done a withdraw of $ ${this.amount}`, 'Withdraw');
+        this.amount = 0;
       });
   }
 
@@ -68,6 +72,7 @@ export class AccountComponent implements OnInit {
       .delete(this.account.accountId)
       .subscribe(resp => {
         this.deleteEvent.emit(resp);
+        this.toastr.success( `Your account is closed.`, 'Close Account');
       });
   }
 }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { environment } from '../environments/environment';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-root',
@@ -10,15 +10,13 @@ import { environment } from '../environments/environment';
 export class AppComponent {
   currentBackEndName = 'Manga';
 
-  /**
-   *
-   */
-  constructor(private router: Router) {
+  constructor(private toastr: ToastrService) {
     localStorage.setItem('back-end', environment.mangaApiUrl);
   }
 
   changeBackEnd(be) {
     this.currentBackEndName = be;
+    this.toastr.warning(`You are now using ${this.currentBackEndName}.`, 'Back-End changed!');
     switch (be) {
       case 'Manga':
         localStorage.setItem('back-end', environment.mangaApiUrl);
@@ -29,7 +27,5 @@ export class AppComponent {
       default:
         break;
     }
-
-    this.router.navigate([`/`]);
   }
 }
