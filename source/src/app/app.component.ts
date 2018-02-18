@@ -26,6 +26,7 @@ export class AppComponent {
 
   changeBackEnd(be) {
     this.currentBackEndName = be;
+    localStorage.setItem('selected-back-end', this.currentBackEndName);
     this.toastr.warning(`You are using ${this.currentBackEndName} now.`, 'Back-End changed!');
     switch (be) {
       case 'Manga':
