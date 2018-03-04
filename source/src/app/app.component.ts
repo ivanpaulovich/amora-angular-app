@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { environment } from '../environments/environment';
 import { ToastrService } from 'ngx-toastr';
+import { MatIconRegistry } from '@angular/material';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -9,8 +11,17 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AppComponent {
   currentBackEndName = 'Acerola';
+  apiUrls = {};
 
-  constructor(private toastr: ToastrService) {
+  constructor(private toastr: ToastrService,
+    private mdIconRegistry: MatIconRegistry,
+    private sanitizer: DomSanitizer) {
+    this.apiUrls['Manga'] = environment.mangaApiUrl;
+    this.apiUrls['Acerola'] = environment.acerolaApiUrl;
+    this.apiUrls['Castanha'] = environment.castanhaApiUrl;
+
+    this.mdIconRegistry.addSvgIcon('manga', this.sanitizer.bypassSecurityTrustResourceUrl('./assets/manga-icon.png'));
+
     this.bootstrapEvironment();
   }
 
@@ -27,19 +38,7 @@ export class AppComponent {
   changeBackEnd(be) {
     this.currentBackEndName = be;
     localStorage.setItem('selected-back-end', this.currentBackEndName);
+    localStorage.setItem('back-end', this.apiUrls[this.currentBackEndName]);
     this.toastr.warning(`You are using ${this.currentBackEndName} now.`, 'Back-End changed!');
-    switch (be) {
-      case 'Manga':
-        localStorage.setItem('back-end', environment.mangaApiUrl);
-        break;
-      case 'Acerola':
-        localStorage.setItem('back-end', environment.acerolaApiUrl);
-        break;
-      case 'Castanha':
-        localStorage.setItem('back-end', environment.castanhaApiUrl);
-        break;
-      default:
-        break;
-    }
   }
 }

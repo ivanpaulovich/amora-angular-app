@@ -12,9 +12,20 @@
     </button>
   </mat-toolbar>
   <mat-menu x-position="before" #menu="matMenu">
-    <button mat-menu-item (click)="changeBackEnd('Acerola')">Use Acerola back-end</button>
-    <button mat-menu-item (click)="changeBackEnd('Manga')">Use Manga back-end</button>
-    <button mat-menu-item (click)="changeBackEnd('Castanha')">Use Castanha back-end</button>
+    <button mat-menu-item (click)="changeBackEnd('Acerola')">
+      <img src="./assets/acerola-icon.png" class="mat-icon material-icons" />
+      <span>Use Acerola back-end</span>
+    </button>
+    <button mat-menu-item (click)="changeBackEnd('Manga')">
+      <img src="./assets/manga-icon.png" class="mat-icon material-icons" />
+      <span>Use Manga back-end</span>
+    </button>
+    <button mat-menu-item (click)="changeBackEnd('Castanha')">
+      <img src="./assets/castanha-icon.png" class="mat-icon material-icons" />
+      <span>
+        Use Castanha back-end
+      </span>
+    </button>
   </mat-menu>
 
   <mat-card>
