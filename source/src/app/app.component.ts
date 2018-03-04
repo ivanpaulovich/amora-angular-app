@@ -8,7 +8,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  currentBackEndName = 'Manga';
+  currentBackEndName = 'Acerola';
 
   constructor(private toastr: ToastrService) {
     this.bootstrapEvironment();
@@ -34,6 +34,9 @@ export class AppComponent {
         break;
       case 'Acerola':
         localStorage.setItem('back-end', environment.acerolaApiUrl);
+        break;
+      case 'Castanha':
+        localStorage.setItem('back-end', environment.castanhaApiUrl);
         break;
       default:
         break;
