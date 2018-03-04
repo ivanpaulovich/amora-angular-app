@@ -3,6 +3,7 @@
     <button mat-icon-button>
       <img src="./assets/acerola-icon.png" class="back-end-logo" *ngIf="currentBackEndName === 'Acerola'">
       <img src="./assets/manga-icon.png" class="back-end-logo" *ngIf="currentBackEndName === 'Manga'">
+      <img src="./assets/castanha-icon.png" class="back-end-logo" *ngIf="currentBackEndName === 'Castanha'">
     </button>
     <span>Manage your account balance</span>
     <span class="example-spacer"></span>
@@ -13,6 +14,7 @@
   <mat-menu x-position="before" #menu="matMenu">
     <button mat-menu-item (click)="changeBackEnd('Acerola')">Use Acerola back-end</button>
     <button mat-menu-item (click)="changeBackEnd('Manga')">Use Manga back-end</button>
+    <button mat-menu-item (click)="changeBackEnd('Castanha')">Use Castanha back-end</button>
   </mat-menu>
 
   <mat-card>
