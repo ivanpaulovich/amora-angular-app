@@ -13,14 +13,10 @@ export class AppComponent {
   currentBackEndName = 'Acerola';
   apiUrls = {};
 
-  constructor(private toastr: ToastrService,
-    private mdIconRegistry: MatIconRegistry,
-    private sanitizer: DomSanitizer) {
+  constructor(private toastr: ToastrService) {
     this.apiUrls['Manga'] = environment.mangaApiUrl;
     this.apiUrls['Acerola'] = environment.acerolaApiUrl;
     this.apiUrls['Castanha'] = environment.castanhaApiUrl;
-
-    this.mdIconRegistry.addSvgIcon('manga', this.sanitizer.bypassSecurityTrustResourceUrl('./assets/manga-icon.png'));
 
     this.bootstrapEvironment();
   }
