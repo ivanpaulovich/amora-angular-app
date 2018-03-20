@@ -17,9 +17,9 @@ docker run -p 8001:80 -d \
 ```
 Then navigate to http://localhost:8001 and play with the App.
 
-# We are live on Azure
+# Live Demo on Azure
 
-You can test the application right now by navigating to the [the Amora Website](http://grape.westus2.cloudapp.azure.com:8001 "Amora Website") and registering with your Security Social Number, Given name and your Initial Account balance.  
+You can play with the latest build by navigating to the [the Amora Website](http://grape.westus2.cloudapp.azure.com:8001 "Amora Website") and registering with your Security Social Number, Given name and your Initial Account balance.  
 
 ![Register Page](https://raw.githubusercontent.com/ivanpaulovich/amora/master/docs/register-page.png)
 
