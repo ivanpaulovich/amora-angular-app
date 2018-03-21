@@ -27,4 +27,4 @@ Then will be redirect to the account balance page where you can Deposit, Withdra
 
 ![Account Balance](https://raw.githubusercontent.com/ivanpaulovich/amora/master/docs/customer-page.png)
 
-This source code and website should be used only for learning and **all data is erased weekly**.
+> This source code and website should be used only for learning purposes and **all data will be erased weekly**.
