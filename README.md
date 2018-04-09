@@ -6,7 +6,7 @@ The Amora website is an Angular application for the [Acerola](https://github.com
 * [Angular](https://www.npmjs.com/package/angular)
 * [Docker](https://docs.docker.com/docker-for-windows/install/)
 
-# Running the latest Docker Build ![ivanpaulovich/amora](https://dockerbuildbadges.quelltext.eu/status.svg?organization=ivanpaulovich&repository=amora)
+# Running the latest Docker Build ![ivanpaulovich/amora](https://dockerbuildbadges.quelltext.eu/status.svg?organization=ivanpaulovich&repository=amora) [![Gitter](https://img.shields.io/badge/chat-on%20gitter-blue.svg)](https://gitter.im/ivanpaulovich/Lobby)
 
 If you like to run a Docker container for this project use the latest image:
 
